@@ -1,0 +1,75 @@
+<html>
+    <head>
+        <title> ทะเบียนราษฏร์ภาคใต้ </title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, intial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="bootstrap/dist/css/bootstrap.min.css">
+    </head>
+    <body>
+        <div class="container">
+            <div class="page-header">
+                <h1> ทะเบียนราษฏร์ภาคใต้
+                    <a class="btn btn-primary" href="insert" role='button'>ลงทะเบียนข้อมูล</a>
+                </h1>
+            </div>
+            <div class="row">
+            <table class="table">
+                <thead class="thead-inverse">
+                    <tr>
+                        <th>No</th>
+                        <th>ID Card</th>
+                        <th>Date of Birth</th>
+                        <th>Name Title</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Address</th>
+                        <th>Province</th>
+                        <th>Zipcode</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <%
+                    province = ["ภูเก็ต","พังงา","กระบี่","ชุมพร","ระนอง","สุราษฎร์ธานี","นครศรีธรรมราช","ตรัง","พัทลุง","สตูล","สงขลา","ปัตตานี","นราธิวาส","ยะลา"];
+                    for(var i=0; i<data.length; i++){
+                        no= i+1;
+                        id=data[i].id;
+                        card=data[i].card;
+                        dateofbirth=data[i].dateofbirth;
+                        sex=data[i].sex;
+                        fname=data[i].fname;
+                        lname=data[i].lname;
+                        address=data[i].address;
+                        p=data[i].province;
+                        zipcode=data[i].zipcode;
+                        if (sex=="M") {
+                            sex_view="นาย";
+                        }else{
+                            sex_view="นางสาว";
+                        }
+                    %>
+                    <tr>
+                        <th scope="row"><%=no%></th>  
+                        <td><%=card%></td>
+                        <td><%=dateofbirth%></td>      
+                        <td><%=sex_view%></td>
+                        <td><%=fname%></td>
+                        <td><%=lname%></td>
+                        <td><%=address%></td>
+                        <td><%=province[p]%></td>
+                        <td><%=zipcode%></td>
+                        <td>
+                            <a class="btn btn-success" href="/update/<%=id%>"role="button">เเก้ไขข้อมูล</a>
+                            <a class="btn btn-danger" href="/delete/<%=id%>"role="button"onclick="return confirm('เเน่ใจนะว่าจะลบ?');">ลบข้อมูล</a>
+                        </td>
+                        </tr>
+                        <%}%>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <script src="jquery-3.2.1.min.js"></script>
+        <script src="popper.min.js"></script> 
+        <script src="bootstrap/dist/js/bootstap.min.js"></script>
+    </body>
+</html>
