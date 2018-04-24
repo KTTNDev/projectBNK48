@@ -43,10 +43,6 @@ app.get('/',function (req,res){
        console.log('Error getting document',err);
     });
 });
-
-
-
-
 app.get('/list',function (req,res){
 
     var data_list = [];
@@ -83,7 +79,6 @@ app.get('/insert',function(req,res){
             PRODUCT : req.body.PRODUCT,
             PDDescription : req.body.PDDescription,
             Price : req.body.Price,
-    
             sex : req.body.sex
         }).then(ref => {
             res.redirect('/list');
@@ -96,8 +91,8 @@ app.get('/update/:id',function(req,res){
     var id=req.params.id;
     db.collection("BNK48SHOP").doc(id).get()
     .then(doc =>{
-            obj1=doc.data();
-            obj2={id :doc.id};
+            obj1 = doc.data();
+            obj2 = {id :doc.id};
             data_list=Object.assign(obj1,obj2);
             res.render('update',data_list);
         })
@@ -109,7 +104,7 @@ app.get('/update/:id',function(req,res){
 app.get('/update/:id',function(req, res) {
     var id = req.params.id;
     var data_list = [] ;
-    db.collection('users').doc(id).get()
+    db.collection('BNK48SHOP').doc(id).get()
     .then(doc => {
         obj1 = doc.data();
         obj2 = {id : doc.id};
@@ -122,20 +117,17 @@ app.get('/update/:id',function(req, res) {
 });
 
 app.post('/update',function(req, res) {
-    db.collection("users").doc(id).update({
-        card : req.body.card,
-        dateofbirth : req.body.dateofbirth,
-        sex : req.body.sex,
-        fname : req.body.fname,
-        lname : req.body.lname,
-        address : req.body.address,
-        province : req.body.province,
-        zipcode : req.body.zipcode,
+    db.collection("BNK48SHOP").doc(id).update({
+        PicProduct : req.body.PicProduct,
+        PRODUCT : req.body.PRODUCT,
+        PDDescription : req.body.PDDescription,
+        Price : req.body.Price,
+        sex : req.body.sex
     }).then(ref => {
-        res.redirect('/')
+        res.redirect('/list')
     });
 });
 
 app.listen(PORT,function() {
-    console.log('Server Stared on localhost');
+    console.log('Server Stared on localhost : 5000');
 });
