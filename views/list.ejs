@@ -1,75 +1,118 @@
+<!DOCTYPE html>
 <html>
-    <head>
-        <title> ทะเบียนราษฏร์ภาคใต้ </title>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, intial-scale=1, shrink-to-fit=no">
-        <link rel="stylesheet" href="bootstrap/dist/css/bootstrap.min.css">
-    </head>
-    <body>
-        <div class="container">
-            <div class="page-header">
-                <h1> ทะเบียนราษฏร์ภาคใต้
-                    <a class="btn btn-primary" href="insert" role='button'>ลงทะเบียนข้อมูล</a>
-                </h1>
-            </div>
-            <div class="row">
-            <table class="table">
-                <thead class="thead-inverse">
-                    <tr>
-                        <th>No</th>
-                        <th>ID Card</th>
-                        <th>Date of Birth</th>
-                        <th>Name Title</th>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>Address</th>
-                        <th>Province</th>
-                        <th>Zipcode</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <%
-                    province = ["ภูเก็ต","พังงา","กระบี่","ชุมพร","ระนอง","สุราษฎร์ธานี","นครศรีธรรมราช","ตรัง","พัทลุง","สตูล","สงขลา","ปัตตานี","นราธิวาส","ยะลา"];
-                    for(var i=0; i<data.length; i++){
-                        no= i+1;
-                        id=data[i].id;
-                        card=data[i].card;
-                        dateofbirth=data[i].dateofbirth;
-                        sex=data[i].sex;
-                        fname=data[i].fname;
-                        lname=data[i].lname;
-                        address=data[i].address;
-                        p=data[i].province;
-                        zipcode=data[i].zipcode;
-                        if (sex=="M") {
-                            sex_view="นาย";
-                        }else{
-                            sex_view="นางสาว";
-                        }
-                    %>
-                    <tr>
-                        <th scope="row"><%=no%></th>  
-                        <td><%=card%></td>
-                        <td><%=dateofbirth%></td>      
-                        <td><%=sex_view%></td>
-                        <td><%=fname%></td>
-                        <td><%=lname%></td>
-                        <td><%=address%></td>
-                        <td><%=province[p]%></td>
-                        <td><%=zipcode%></td>
-                        <td>
-                            <a class="btn btn-success" href="/update/<%=id%>"role="button">เเก้ไขข้อมูล</a>
-                            <a class="btn btn-danger" href="/delete/<%=id%>"role="button"onclick="return confirm('เเน่ใจนะว่าจะลบ?');">ลบข้อมูล</a>
-                        </td>
-                        </tr>
-                        <%}%>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        <script src="jquery-3.2.1.min.js"></script>
-        <script src="popper.min.js"></script> 
-        <script src="bootstrap/dist/js/bootstap.min.js"></script>
-    </body>
+<head>
+<title>BNK48 SHOP</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" href="bootstrap/dist/css/bootstrap.min.css">
+<img src = "Capture1.png" width="auto" height="auto">
+<div class="topnav">
+    <a href="/">HOME</a>
+    <a href="/list">PRODUCT</a>
+    <ul class="nav navbar-nav navbar-right">
+           <a href="/insert">ADD PRODUCT</a>
+    </ul>
+</div>
+  </div>
+<style>
+h1{
+    font-family:Hammer Thin; 
+}
+body {
+  margin: 0;
+  font-size: 20px;
+  font-family: Hammer Thin ;
+}
+.topnav {
+    overflow: hidden;
+    background: #FFF5EE;
+}
+.topnav a {
+    float: left;
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+.topnav a:hover {
+    background-color: #FFB6C1;
+    color: black;
+}
+.footer {
+    background-color: #f1f1f1;
+    padding: 10px;
+}  
+    body {
+        background-image: url("wq.jpg");
+        background-repeat: no-repeat;
+    }
+    </style>
+</head>
+<body>
+<div class="container">
+<div class="page-header">
+
+</div>
+<div class="row">
+
+<table class="table">
+<thead class="thead-inverse">
+<tr>
+<th>No.</th>
+<th>PicProduct</th>
+<th>PRODUCT.</th>
+<th>PDDescription</th>
+<th>Price</th>
+
+<th>sex</th>
+</tr>
+</thead>
+<tbody>
+<% 
+province_array=["Phuket","Krabi","Trang"];
+for(var i=0; i<data.length; i++) { 
+no=i+1;
+PicProduct=data[i].PicProduct
+id=data[i].id;
+PRODUCT=data[i].PRODUCT;
+PDDescription=data[i].PDDescription;
+Price=data[i].Price;
+sex=data[i].sex;
+
+
+if(sex=="M") {
+sex2="Male";
+} else {
+sex2="Female";
+}
+%> 
+
+
+<tr>
+<th scope="row"><%=no%></th>
+<td><%=PicProduct%></td>
+<td><%=PRODUCT%> </td>
+<td><%=PDDescription%> </td>
+<td><%=Price%></td>
+<td><%=sex2%></td>
+
+<td>
+<a class="btn btn-success" href="/update/<%=id%>" role="button">Update</a>
+<a class="btn btn-danger" href="/delete/<%=id%>" 
+role="button" onclick="return confirm('Do you want to delete?');">Delete</a>
+</td>
+</tr>
+<% } // end for%>
+</tbody>
+</table>
+</div>
+
+
+</div>
+<script src="jquery-3.2.1.slim.min.js" ></script>
+<script src="popper.min.js" ></script>
+<script src="bootstrap/dist/js/bootstrap.min.js"></script>
+
+</body>
 </html>

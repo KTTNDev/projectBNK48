@@ -1,102 +1,95 @@
+<!DOCTYPE html>
 <html>
-    <head>
-        <title> ทะเบียนราษฏภาคใต้ </title>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, intial-scale=1, shrink-to-fit=no">
-        <link rel="stylesheet" href="../bootstrap/dist/css/bootstrap.min.css">
-    </head>
-    <body>
-        <div class="container">
-            <div class="page-header">
-                <h1> เเก้ไขข้อมูล </h1>
-                <hr>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <form method="post" action="/update">
-                        <div class="form-row">
-                            <div class="form-group col-md-6">
-                                <label for="Idcard">บัตรประชาชน</label>
-                                <input type="text" class="form-control" name="card" value="<%=card%>" maxlength = "13" required>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="Dateofbirth">วันเดือนปีเกิด</label>
-                                <input type="text" class="form-control" name="dateofbirth" value="<%=dateofbirth%>" required>
-                            </div>
-                        </div>
-                    <%
-                    check_m="";
-                    check_f="";
-        
-                    if(sex=="M") {
-                        check_m="checked";
-                    } else {
-                        check_f="checked";
-                    }
-                    %>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for = "sex">คำนำหน้า</label>
-                            <div class="custom-control custom-radio">
-                                <input class="custom-control-input" type="radio" name="sex" id="sex1" value="M" <%=check_m%>>
-                                <label class="custom-control-label" for="sex1">นาย</label>
-                            </div>
-                            <div class="custom-control custom-radio custom-control-inline">
-                                <input class="custom-control-input" type="radio" name="sex" id="sex2" value="F" <%=check_f%>>
-                                <label class="custom-control-label" for="sex2">นางสาว</label>
-                            </div>
-                        </div>
-                            <div class="form-group  col-md-5">
-                                <label for="Fname"> ชื่อ </label>
-                                <input type="text" class="form-control" name="fname" value="<%=fname%>" required>
-                            </div>
-                            <div class="form-group  col-md-6">
-                                <label for="Lname">นามสกุล</label>
-                                <input type="text" class="form-control" name="lname" value="<%=lname%>" required>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="Address">ที่อยู่</label>
-                                <input type="text" class="form-control" name="address" value="<%=address%>" required>
-                            </div>
-                        </div>
-                    <div class="form-row">
-                        <div class="form-group col-md-4">
-                            <%
-                            province_array = ["ภูเก็ต","พังงา","กระบี่","ชุมพร","ระนอง","สุราษฎร์ธานี","นครศรีธรรมราช","ตรัง","พัทลุง","สตูล","สงขลา","ปัตตานี","นราธิวาส","ยะลา"];
-                            %>
-                            <label for="province">จังหวัด</label>
-                            <select class="form-control" name="province" id="province" required>
-                                <%
-                                    for(i=0;i<province_array.length;i++){
-                                        if(i==province) {
-                                            select_p="selected";
-                                        } else {
-                                            select_p="";
-                                        }
-                                %>
-                                <option value=<%=i%> <%=select_p%> ><%=province_array[i]%></option>
-                                <% } %>
-                            </select>
-                        </div>
-                        <div class="form-group col-md-4">
-                                <label for="zipcode">รหัสไปรษณีย์</label >
-                                <input type="intl" class="form-control" name="zipcode"  maxlength = "5" value="<%=zipcode%>" required > 
-                            </div>
-                        </div>
-                    </div>
-                </div>  
-                        <input type="hidden" name="id" value="<%=id%>">
-                        <button type="submit" class="btn btn-primary">ยืนยัน</button>
-                        <button type="reset" class="btn btn-primary">ล้างข้อมูล</button>
-                        <button class="btn btn-primary" a href="index" onclick="history.go(-1);return false;">ย้อนกลับ</a></button>
-                    </form>
-                </div>
-            </div>
-        </div>
-        <script src="jquery-3.2.1.min.js"></script>
-        <script src="popper.min.js"></script> 
-        <script src="bootstrap/dist/js/bootstap.min.js"></script>
-        </body>
+<head>
+<title>BNK48 SHOP </title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" href="../bootstrap/dist/css/bootstrap.min.css">
+<img src = "Capture1.png" width="auto" height="auto">
+<div class="topnav">
+    <a href="/">HOME</a>
+    <a href="/list">PRODUCT</a>
+    <a href="insert" >ADD PRODUCT</a>
+  </div>
+  </div>
+</head>
+<body>
+<div class="container">
+<div class="page-header">
+<h1>BNK48 SHOP</h1>
+<hr>
+</div>
+<div class="row">
+<div class="col">
+<form method="post" action="/update">
+<div class="form-group">
+<label for="firstname">First Name</label>
+<input type="text" class="form-control" name="fname" value="<%=fname%>">
+</div>
+<div class="form-group">
+<label for="lastname">Last Name</label>
+<input type="text" class="form-control" name="lname" value="<%=lname%>">
+</div> 
+<%
+check_m="";
+check_f="";
+
+if(sex=="M") {
+check_m="checked";
+} else {
+check_f="checked";
+}
+%>
+<div class="form-group">
+<label for="sex">Sex</label>
+<div class="form-check">
+<input class="form-check-input" type="radio" 
+name="sex" id="M" value="M" <%=check_m%>>
+<label class="form-check-label" for="M">
+Male
+</label>
+</div>
+<div class="form-check">
+<input class="form-check-input" type="radio" 
+name="sex" id="F" value="F" <%=check_f%>>
+<label class="form-check-label" for="F">
+Female
+</label>
+</div>
+</div>
+<% 
+province_array=["Phuket","Krabi","Trang"];
+%>
+<div class="form-group">
+<label for="province">Province</label>
+<select class="form-control" name="province" id="province">
+<%
+for(i=0;i<province_array.length;i++) {
+if(province==i) {
+select_p="selected";
+}else {
+select_p="";
+}
+%>
+<option value="<%=i%>" <%=select_p%> > 
+<%=province_array[i]%> 
+</option>
+<%
+}
+%>
+</select>
+</div>
+
+<input type="hidden" name="id" value="<%=id%>">
+<button type="submit" class="btn btn-primary">Submit</button>
+<button type="reset" class="btn btn-primary">Reset</button>
+</form>
+</div>
+</div>
+</div>
+
+<script src="../jquery-3.2.1.slim.min.js" ></script>
+<script src="../popper.min.js" ></script>
+<script src="../bootstrap/dist/js/bootstrap.min.js"></script>
+</body>
 </html>

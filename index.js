@@ -16,64 +16,96 @@ app.use(cookieParser());
 var firebase = require('firebase');
 require("firebase/firestore")
 firebase.initializeApp({
-    apiKey: "AIzaSyCdsDdqpPtBnPEoFxK7xHwxUgEZUfv_MDs",
-    authDomain: "webfirebase-754d5.firebaseapp.com",
-    databaseURL: "https://webfirebase-754d5.firebaseio.com",
-    projectId: "webfirebase-754d5",
-    storageBucket: "webfirebase-754d5.appspot.com",
-    messagingSenderId: "919632307200"
-  });
+    apiKey: "AIzaSyBYGDGflEX9-6jI8WBx13iR76LUcuInhCs",
+    authDomain: "webfirebase-29858.firebaseapp.com",
+    databaseURL: "https://webfirebase-29858.firebaseio.com",
+    projectId: "webfirebase-29858",
+    storageBucket: "webfirebase-29858.appspot.com",
+    messagingSenderId: "882508723833"
+});
 
 var db = firebase.firestore();
 
-
-app.get('/insert',function(req, res) {
-    res.render('insert');
-});
-
-app.post('/insert',function(req, res) {
-    db.collection('users').add({
-       
-        card : req.body.card,
-        dateofbirth : req.body.dateofbirth,
-        sex : req.body.sex,
-        fname : req.body.fname,
-        lname : req.body.lname,
-        address : req.body.address,
-        province : req.body.province,
-        zipcode : req.body.zipcode,
-
-    }).then(ref => {
-        res.redirect('/')
-    });
-});
-
-app.get('/',function (req, res) {
+app.get('/',function (req,res){
 
     var data_list = [];
-    db.collection('users').get()
+    db.collection('BNK48SHOP').get()
     .then(snapshot => {
         snapshot.forEach(doc => {
-            obj1 = doc.data();
-            obj2 = {id : doc.id};
-            obj3 = Object.assign(obj1, obj2);
+            obj1=doc.data();
+            obj2={id :doc.id};
+            obj3=Object.assign(obj1,obj2);
             data_list.push(obj3);
-        })
-        //console.log(data_list);
-        res.render('list',{data:data_list});
-    })
+        });
+    res.render('home',{data:data_list});
+})
     .catch(err => {
-        console.log('Error getting document', err);
+       console.log('Error getting document',err);
     });
 });
 
-app.get('/delete/:id',function(req, res) {
-    var id = req.params.id;
-    db.collection('users').doc(id).delete().then(function() {
-        res.redirect('/');
+
+
+
+app.get('/list',function (req,res){
+
+    var data_list = [];
+    db.collection('BNK48SHOP').get()
+    .then(snapshot => {
+        snapshot.forEach(doc => {
+            obj1=doc.data();
+            obj2={id :doc.id};
+            obj3={id :doc.id};
+            obj4=Object.assign(obj1,obj2,obj3);
+            data_list.push(obj4);
+        });
+    res.render('list',{data:data_list});
+})
+    .catch(err => {
+       console.log('Error getting document',err);
+    });
+});
+app.get('/delete/:id',function(req,res){
+    var id=req.params.id;
+    db.collection("BNK48SHOP").doc(id).delete()
+    .then(function(){
+        res.redirect('/list');
+    });
+});
+
+app.get('/insert',function(req,res){
+        res.render('insert');
     });
 
+    app.post('/insert',function(req,res){
+        db.collection('BNK48SHOP').add({
+            PicProduct : req.body.PicProduct,
+            PRODUCT : req.body.PRODUCT,
+            PDDescription : req.body.PDDescription,
+            Price : req.body.Price,
+    
+            sex : req.body.sex
+        }).then(ref => {
+            res.redirect('/list');
+            res.redirect('/home');
+        })
+    });
+    
+    
+app.get('/update/:id',function(req,res){
+    var id=req.params.id;
+    db.collection("BNK48SHOP").doc(id).get()
+    .then(doc =>{
+            obj1=doc.data();
+            obj2={id :doc.id};
+            data_list=Object.assign(obj1,obj2);
+            res.render('update',data_list);
+        })
+       .catch(err => {
+           console.log('Error getting document',err);
+    });
 });
+
 app.get('/update/:id',function(req, res) {
     var id = req.params.id;
     var data_list = [] ;

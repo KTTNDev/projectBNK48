@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>BNK48 SHOP</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" href="bootstrap/dist/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+<div class="page-header">
+<h1>BNK48 SHOP
+<a class="btn btn-primary" href="insert" role="button">Insert</a>
+</h1> 
+</div>
+<div class="row">
+
+<table class="table">
+<thead class="thead-inverse">
+<tr>
+    <th>No.</th>
+
+    <th>PRODUCT.</th>
+    <th>PDDescription</th>
+    <th>Price</th>
+
+    <th>sex</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% 
+    province_array=["Phuket","Krabi","Trang"];
+    for(var i=0; i<data.length; i++) { 
+    no=i+1;
+   
+    id=data[i].id;
+    PRODUCT=data[i].PRODUCT;
+    PDDescription=data[i].PDDescription;
+    Price=data[i].Price;
+    sex=data[i].sex;
+
+    
+    if(sex=="M") {
+    sex2="Male";
+    } else {
+    sex2="Female";
+    }
+    %> 
+    <tr>
+    <th scope="row"><%=no%></th>
+
+    <td><%=PRODUCT%> </td>
+    <td><%=PDDescription%> </td>
+    <td><%=Price%></td>
+    <td><%=sex2%></td>
+ 
+    <td>
+<a class="btn btn-success" href="/update/<%=id%>" role="button">Update</a>
+<a class="btn btn-danger" href="/delete/<%=id%>" 
+role="button" onclick="return confirm('Do you want to delete?');">Delete</a>
+</td>
+</tr>
+<% } // end for%>
+</tbody>
+</table>
+</div>
+</div>
+<script src="jquery-3.2.1.slim.min.js" ></script>
+<script src="popper.min.js" ></script>
+<script src="bootstrap/dist/js/bootstrap.min.js"></script>
+<script>
+    function myFunction() {
+        document.body.style.backgroundColor = "red";
+    }
+    </script>
+</body>
+</html>
