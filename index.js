@@ -44,23 +44,23 @@ app.get('/',function (req,res){
     });
 });
 app.get('/list',function (req,res){
-
     var data_list = [];
     db.collection('BNK48SHOP').get()
     .then(snapshot => {
         snapshot.forEach(doc => {
-            obj1=doc.data();
-            obj2={id :doc.id};
-            obj3={id :doc.id};
-            obj4=Object.assign(obj1,obj2,obj3);
-            data_list.push(obj4);
-        });
-    res.render('list',{data:data_list});
-})
+            obj1 = doc.data();
+            obj2 = {id : doc.id};
+            obj3 = Object.assign(obj1, obj2);
+            data_list.push(obj3);
+        })
+        //console.log(data_list);
+        res.render('list',{data:data_list});
+    })
     .catch(err => {
-       console.log('Error getting document',err);
+        console.log('Error getting document', err);
     });
 });
+
 app.get('/delete/:id',function(req,res){
     var id=req.params.id;
     db.collection("BNK48SHOP").doc(id).delete()
@@ -79,7 +79,8 @@ app.get('/insert',function(req,res){
             PRODUCT : req.body.PRODUCT,
             PDDescription : req.body.PDDescription,
             Price : req.body.Price,
-            sex : req.body.sex
+            sex : req.body.sex,
+            province : req.body.province
         }).then(ref => {
             res.redirect('/list');
             res.redirect('/home');
@@ -122,7 +123,8 @@ app.post('/update',function(req, res) {
         PRODUCT : req.body.PRODUCT,
         PDDescription : req.body.PDDescription,
         Price : req.body.Price,
-        sex : req.body.sex
+        sex : req.body.sex,
+        province : req.body.province
     }).then(ref => {
         res.redirect('/list')
     });

@@ -8,7 +8,8 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="bootstrap/dist/css/bootstrap.min.css">
-  <img src = "cd.jpg" width="auto" height="auto">
+  <img src =  "BG.png" width="auto" height="auto">
+  
   <div class="topnav">
         <a href="/">HOME</a>
         <a href="/list">PRODUCT</a>
@@ -17,42 +18,80 @@
         </ul>
   </div>
   </div>
+  
+
   <div class="container">
       <div class="page-header">
-      
-      </div>
+          <div class="container text-center">    
+
+              <br>  <br>
+              <div class="row">
+                <div class="col-sm-2">
+                  <img src="1.png" class="img-responsive" style="width:100%" alt="Image">
+                  <p>The Debut Photoset</p>
+                </div>
+                <div class="col-sm-2"> 
+                  <img src="2.png" class="img-responsive" style="width:100%" alt="Image">
+                  <p>Aitakatta Single Costume Photoset</p>    
+                </div>
+                <div class="col-sm-2"> 
+                  <img src="3.png" class="img-responsive" style="width:100%" alt="Image">
+                  <p> Thai costume Photoset</p>
+                </div>
+                <div class="col-sm-2"> 
+                  <img src="4.png" class="img-responsive" style="width:100%" alt="Image">
+                  <p>Merry Christmas 2017 Photoset</p>
+                </div> 
+                <div class="col-sm-2"> 
+                  <img src="5.png" class="img-responsive" style="width:100%" alt="Image">
+                  <p>Memorial of Handshake Photoset</p>
+                </div>     
+                <div class="col-sm-2"> 
+                  <img src="6.png" class="img-responsive" style="width:100%" alt="Image">
+                  <p>Koisuru Fortune Cookie Senbatsu Photoset</p>
+                </div> 
+              </div>
+            </div>
+      </div>    
+      <h1> <center>สินค้า</center></h1>
       <div class="row">
-      
+     
       <table class="table">
       <thead class="thead-inverse">
       <tr>
 
-      <th>PicProduct</th>
       <th>PRODUCT.</th>
       <th>PDDescription</th>
       <th>Price</th>
-    
+      <th>PRODUCT STATUS</th>
       
       </tr>
       </thead>
       <tbody>
-      <% 
-      province_array=["Phuket","Krabi","Trang"];
-      for(var i=0; i<data.length; i++) { 
-      no=i+1;
-      PicProduct=data[i].PicProduct;
-      id=data[i].id;
-      PRODUCT=data[i].PRODUCT;
-      PDDescription=data[i].PDDescription;
-      Price=data[i].Price;
-      province=data[i].province;
-      %> 
+          <% 
+          province = ["PHOTOSET","PHOTOBOOK","CD"];
+          for(var i=0; i<data.length; i++){
+          no=i+1;
+          id=data[i].id;
+          PicProduct=data[i].PicProduct
+          PRODUCT=data[i].PRODUCT;
+          PDDescription=data[i].PDDescription;
+          Price=data[i].Price;
+          p=data[i].province;
+          sex=data[i].sex;
+          if (sex=="M") {
+              sex_view="In stock";
+          }else{
+              sex_view="Out stock";
+          }
+          %>
       <tr>
-        <td><%=PicProduct%></td>
-      <td><%=PRODUCT%> </td>
-      <td><%=PDDescription%> </td>
-      <td><%=Price%></td>
- 
+
+          <td><%=province[p]%></td>
+          <td><%=PDDescription%> </td>
+          <td><%=Price%></td>
+          <td><%=sex%></td>
+          
  
   
       </tr>
@@ -63,7 +102,7 @@
    
   <div class="container text-center">   
      
-    <br><br>
+    <br><br><hr><br><hr>
     <center><h1>ตัวอย่างสินค้า</h1></center>
         <div class="row">
           <div class="col-sm-4">
@@ -189,4 +228,6 @@
 </footer>
 
 </body>
+
 </html>
+

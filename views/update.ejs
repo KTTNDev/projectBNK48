@@ -83,35 +83,47 @@
    <label for="Price">Price</label>
    <input type="text" class="form-control" name="Price" value="<%=Price%>">
     </div> 
-    
-<%
-check_m="";
-check_f="";
+</div>
+    <%
+    check_m="";
+    check_f="";
 
-if(sex=="M") {
-check_m="checked";
-} else {
-check_f="checked";
-}
-%>
-<div class="form-group">
-<label for="sex">Sex</label>
-<div class="form-check">
-<input class="form-check-input" type="radio" 
-name="sex" id="M" value="M" <%=check_m%>>
-<label class="form-check-label" for="M">
-Male
-</label>
-</div>
-<div class="form-check">
-<input class="form-check-input" type="radio" 
-name="sex" id="F" value="F" <%=check_f%>>
-<label class="form-check-label" for="F">
-Female
-</label>
-</div>
-</div>
-
+    if(sex=="M") {
+        check_m="checked";
+    } else {
+        check_f="checked";
+    }
+    %>
+    <div class="form-row">
+        <div class="form-group">
+            <label for = "sex">คำนำหน้า</label>
+            <div class="custom-control custom-radio">
+                <input class="custom-control-input" type="radio" name="sex" id="sex1" value="M" <%=check_m%>>
+                <label class="custom-control-label" for="sex1">นาย</label>
+            </div>
+            <div class="custom-control custom-radio custom-control-inline">
+                <input class="custom-control-input" type="radio" name="sex" id="sex2" value="F" <%=check_f%>>
+                <label class="custom-control-label" for="sex2">นางสาว</label>
+            </div>
+        </div>
+        <div class="form-group col-md-4">
+            <%
+            province = ["PHOTOSET","PHOTOBOOK","CD"];
+            %>
+            <label for="province">PHODUCT TYPE</label>
+            <select class="form-control" name="province" id="province" required>
+                <%
+                    for(i=0;i<province_array.length;i++){
+                        if(i==province) {
+                            select_p="selected";
+                        } else {
+                            select_p="";
+                        }
+                %>
+                <option value=<%=i%> <%=select_p%> ><%=province_array[i]%></option>
+                <% } %>
+            </select>
+        </div>
 
 <input type="hidden" name="id" value="<%=id%>">
 <button type="submit" class="btn btn-primary">Submit</button>
