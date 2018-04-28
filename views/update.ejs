@@ -7,6 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link rel="stylesheet" href="../bootstrap/dist/css/bootstrap.min.css">
 <a href="/"><img src =  "BG.png" width="auto" height="auto"></a>
+
 <div class="topnav">
     <a href="/">HOME</a>
     <a href="/list">PRODUCT</a>
@@ -43,9 +44,16 @@
             padding: 10px;
         }  
             body {
-                background-color: #D8BFD8 ;
-                background-repeat: repeat;
+                background-image: url('../wq.jpg');
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-attachment: fixed;
+            -o-background-size: 100% 100%, auto;
+            -moz-background-size: 100% 100%, auto;
+            -webkit-background-size: 100% 100%, auto;
+            background-size: 100% 100%, auto;
             }
+            
             .carousel-inner img {
       width: 100%; /* Set width to 100% */
       margin: auto;
@@ -101,16 +109,19 @@
                                                             <label for="PDDescription">PDDescription</label>
                                                             <input type="text" class="form-control" name="PDDescription" value="<%=PDDescription%>" required>
                                                         </div>
-                                            </div>
-
-                                                    <div class="form-group  col-md-5">
-                                                            <label for="Price"> Price </label>
-                                                            <input type="text" class="form-control" name="Price" value="<%=Price%>" required>
-                                                        </div>
                                                         <div class="form-group  col-md-5">
-                                                                <label for="PRODUCT">Amount</label>
-                                                                <input type="text" class="form-control" name="PRODUCT" value="<%=PRODUCT%>" required>
+                                                                <label for="Price"> Price </label>
+                                                                <input type="text" class="form-control" name="Price" value="<%=Price%>" required>
                                                             </div>
+                                                        </div>
+
+                                                            <div class="form-group  col-md-5">
+                                                                    <label for="PRODUCT">Amount</label>
+                                                                    <input type="text" class="form-control" name="PRODUCT" value="<%=PRODUCT%>" required>
+                                                                </div>
+                                                                
+                                  
+                                                  
                                         <%
                                         check_m="In stock";
                                         check_f="Out stock";
