@@ -9,7 +9,7 @@
 <div class="topnav">
     <a href="/">HOME</a>
     <a href="/list">PRODUCT</a>
-    <a href="insert" >ADD PRODUCT</a>
+    <a href="/insert">ADD PRODUCT</a>
   </div>
   </div>
   <style>
@@ -42,7 +42,7 @@
             padding: 10px;
         }  
             body {
-                background-image: url("wq.jpg");
+                background-color: #DDA0DD;
                 background-repeat: repeat;
             }
             .carousel-inner img {
@@ -61,6 +61,7 @@
 <body>
        
                             <div class="container">
+                                
                                 <div class="page-header">
                                 <hr>    <h1> |PRODUCT UPDATE|  </h1>
                                     <hr>
@@ -94,6 +95,7 @@
                                                         </select>
                                                         
                                                     </div>
+                             
                                                     <div class="form-group col-md-7">
                                                             <label for="PDDescription">PDDescription</label>
                                                             <input type="text" class="form-control" name="PDDescription" value="<%=PDDescription%>" required>
@@ -138,7 +140,6 @@
 
 
 <center>
-
 <button type="submit" class="btn btn-success  btn-lg">SUBMIT</button>
 <button type="reset" class="btn btn-danger btn-lg">RESET</button>
 <button class="btn btn-warning btn-lg" a href="/list" onclick="history.go(-1);return false;">BACK</a></button>
