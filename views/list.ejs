@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link rel="stylesheet" href="bootstrap/dist/css/bootstrap.min.css">
-<img src =  "BG.png" width="auto" height="auto">
+<a href="/"><img src =  "BG.png" width="auto" height="auto"></a>
 <div class="topnav">
     <a href="/">HOME</a>
     <a href="/list">PRODUCT</a>
@@ -50,9 +50,10 @@ body {
     </style>
 </head>
 <body>
+    
 <div class="container">
 <div class="page-header">
-
+        <hr> <h1>|ALL PRODUCT|</h1>  <hr>
 </div>
 <div class="row">
 
@@ -97,9 +98,9 @@ if (sex=="M") {
 
 
 <td>
-<a class="btn btn-success" href="/update/<%=id%>" role="button">Update</a>
-<a class="btn btn-danger" href="/delete/<%=id%>" 
-role="button" onclick="return confirm('Do you want to delete?');">Delete</a>
+<a class="btn btn-success " href="/update/<%=id%>" role="button">|UPDATE|</a>
+<a class="btn btn-danger " href="/delete/<%=id%>" 
+role="button" onclick="return confirm('Do you want to delete?');">|DELETE|</a>
 </td>
 </tr>
 <% } // end for%>

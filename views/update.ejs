@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link rel="stylesheet" href="../bootstrap/dist/css/bootstrap.min.css">
-<img src = "Capture1.png" width="auto" height="auto">
+<a href="/"><img src =  "BG.png" width="auto" height="auto"></a>
 <div class="topnav">
     <a href="/">HOME</a>
     <a href="/list">PRODUCT</a>
@@ -59,75 +59,90 @@
             
 </head>
 <body>
-<div class="container">
-<div class="page-header">
-<h1>BNK48 SHOP</h1>
-<hr>
-</div>
-<div class="row">
-<div class="col">
-<form method="post" action="/update">
-<div class="form-group">
-<label for="PicProduct">PicProduct</label>
-<input type="text" class="form-control" name="PicProduct" value="<%=PicProduct%>">
-</div>
-<div class="form-group">
-<label for="PRODUCT">PRODUCT</label>
-<input type="text" class="form-control" name="PRODUCT" value="<%=PRODUCT%>">
-</div> 
-<div class="form-group">
-    <label for="PDDescription">PDDescription</label>
-    <input type="text" class="form-control" name="PDDescription" value="<%=PDDescription%>">
-    </div> 
-<div class="form-group">
-   <label for="Price">Price</label>
-   <input type="text" class="form-control" name="Price" value="<%=Price%>">
-    </div> 
-</div>
-    <%
-    check_m="";
-    check_f="";
+       
+                            <div class="container">
+                                <div class="page-header">
+                                <hr>    <h1> |PRODUCT UPDATE|  </h1>
+                                    <hr>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <form method="post" action="/update">
+                                            
+                                            <div class="form-row">
+                                                
+                                                <div class="form-group col-md-1">
+                                                    <label for="PicProduct">SET</label>
+                                                    <input type="text" class="form-control" name="PicProduct" value="<%=PicProduct%>"  required>
+                                                </div>
+                                                <div class="form-group col-md-2">
+                                                        <%
+                                                        province = ["PHOTOSET","PHOTOBOOK","CD"];
+                                                        %>
+                                                        <label for="province">PRODUCT TYPE</label>
+                                                        <select class="form-control" name="province" id="province" required>
+                                                        <%
+                                                                for(i=0;i<province.length;i++){
+                                                                    if(i==province) {
+                                                                        select_p="selected";
+                                                                    } else {
+                                                                        select_p="";
+                                                                    }
+                                                            %>
+                                                        <option value=<%=i%> <%=select_p%> ><%=province[i]%></option>
+                                                            <% } %>
+                                                        </select>
+                                                        
+                                                    </div>
+                                                    <div class="form-group col-md-7">
+                                                            <label for="PDDescription">PDDescription</label>
+                                                            <input type="text" class="form-control" name="PDDescription" value="<%=PDDescription%>" required>
+                                                        </div>
+                                            </div>
 
-    if(sex=="M") {
-        check_m="checked";
-    } else {
-        check_f="checked";
-    }
-    %>
-    <div class="form-row">
-        <div class="form-group">
-            <label for = "sex">คำนำหน้า</label>
-            <div class="custom-control custom-radio">
-                <input class="custom-control-input" type="radio" name="sex" id="sex1" value="M" <%=check_m%>>
-                <label class="custom-control-label" for="sex1">นาย</label>
-            </div>
-            <div class="custom-control custom-radio custom-control-inline">
-                <input class="custom-control-input" type="radio" name="sex" id="sex2" value="F" <%=check_f%>>
-                <label class="custom-control-label" for="sex2">นางสาว</label>
-            </div>
-        </div>
-        <div class="form-group col-md-4">
-            <%
-            province = ["PHOTOSET","PHOTOBOOK","CD"];
-            %>
-            <label for="province">PHODUCT TYPE</label>
-            <select class="form-control" name="province" id="province" required>
-                <%
-                    for(i=0;i<province_array.length;i++){
-                        if(i==province) {
-                            select_p="selected";
-                        } else {
-                            select_p="";
-                        }
-                %>
-                <option value=<%=i%> <%=select_p%> ><%=province_array[i]%></option>
-                <% } %>
-            </select>
-        </div>
+                                                    <div class="form-group  col-md-5">
+                                                            <label for="Price"> Price </label>
+                                                            <input type="text" class="form-control" name="Price" value="<%=Price%>" required>
+                                                        </div>
+                                                        <div class="form-group  col-md-5">
+                                                                <label for="PRODUCT">Amount</label>
+                                                                <input type="text" class="form-control" name="PRODUCT" value="<%=PRODUCT%>" required>
+                                                            </div>
+                                        <%
+                                        check_m="In stock";
+                                        check_f="Out stock";
+                            
+                                        if(sex=="In stock") {
+                                            check_m="checked";
+                                        } else {
+                                            check_f="checked";
+                                        }
+                                        %>
+                                        <div class="form-row">
+                                            <div class="form-group">
+                                                <label for = "sex">PRODUCT STATUS</label>
+                                                <div class="custom-control custom-radio">
+                                                    <input class="custom-control-input" type="radio" name="sex" id="sex1" value="In stock" <%=check_m%>>
+                                                    <label class="custom-control-label" for="sex1">In stock</label>
+                                                </div>
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input class="custom-control-input" type="radio" name="sex" id="sex2" value="Out stock" <%=check_f%>>
+                                                    <label class="custom-control-label" for="sex2">Out stock</label>
+                                                </div>
+                                            </div>
+                                            </div>
+                                           
+                                        </div>
 
-<input type="hidden" name="id" value="<%=id%>">
-<button type="submit" class="btn btn-primary">Submit</button>
-<button type="reset" class="btn btn-primary">Reset</button>
+                                    </div>  
+
+
+<center>
+
+<button type="submit" class="btn btn-success  btn-lg">SUBMIT</button>
+<button type="reset" class="btn btn-danger btn-lg">RESET</button>
+<button class="btn btn-warning btn-lg" a href="/list" onclick="history.go(-1);return false;">BACK</a></button>
+</center>
 </form>
 </div>
 </div>

@@ -5,7 +5,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, intial-scale=1, shrink-to-fit=no">
         <link rel="stylesheet" href="bootstrap/dist/css/bootstrap.min.css">
-        <img src =  "BG.png" width="auto" height="auto">
+        <a href="/"><img src =  "BG.png" width="auto" height="auto"></a>
         <div class="topnav">
 
             <a href="/">HOME</a>
@@ -51,9 +51,10 @@
             </style>
     </head>
     <body>
-        <div class="container">
+            <div class="container"> 
+      
             <div class="page-header">
-                <hr>
+                <hr> <h1>|ADD PRODUCT|</h1>  <hr>
         </div>
             <div class="col">
                <form method="post" action="insert">
@@ -62,13 +63,13 @@
                 <div class="row">
                         <div class="form-group col-md-2">
                                 <label for="PicProduct">SET</label>
-                                <input type="text" class="form-control" name="PicProduct" placeholder="PRODUCT SET">
+                                <input type="text" class="form-control" name="PicProduct" placeholder="product set.....">
                             </div>
                 <div class="form-group col-md-2">
                         <%
                         province = ["PHOTOSET","PHOTOBOOK","CD"];
                         %>
-                        <label for="province">PRODUCT TYPE</label>
+                        <label for="province">PRODUCT</label>
                         <select class="form-control" name="province" id="province" required>
                             <%
                                 for(i=0;i<province.length;i++){
@@ -77,25 +78,27 @@
                             <% } %>
                         </select>               
                 </div>
-                <div class="form-group col-md-8">
+                <div class="form-group col-md-7">
+                    
                         <label for="PDDescription">PDDescription</label>
-                        <input type ="text" class="form-control" name="PDDescription" placeholder="Product Description">
+                        <input type ="text" class="form-control" name="PDDescription" placeholder="Product Description........" tyle="height:200px">
                     </div>
 
-            </div>
+            </div>               
+            <br>
             <div class="row">
-                         
-                       
+                   
+         
                                   <div class="form-group col-md-2">
                                     <label for="Price">Price</label>
-                                    <input type ="text" class="form-control" name="Price" placeholder="Price">
+                                    <input type ="text" class="form-control" name="Price" placeholder="Price........">
                                 </div>
                                 <div class="form-group col-md-2">
                                         <label for="PRODUCT">Amount</label>
-                                        <input type="text" class="form-control" name="PRODUCT" placeholder="Amount">
+                                        <input type="text" class="form-control" name="PRODUCT" placeholder="Amount........">
                                     </div>
-                            </div>
-                          
+                            </div>               
+                            <br>
                                  <div class="form-group">
                                      <label for = "sex">PRODUCT STATUS</label>
                                      <div class="custom-control custom-radio">
@@ -111,9 +114,9 @@
                   
              
                  
-                
-                   <button type ="submit" class="btn btn-primary">Submit</button>
-                   <button type ="reset" class="btn btn-primary">Reset</button>
+                <br>
+                   <button type ="submit" class="btn btn-primary  btn-lg">Submit</button>
+                   <button type ="reset" class="btn btn-primary  btn-lg">Reset</button>
                </form>
             </div>
         </div>

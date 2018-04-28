@@ -80,7 +80,8 @@ app.get('/insert',function(req,res){
             PDDescription : req.body.PDDescription,
             Price : req.body.Price,
             sex : req.body.sex,
-            province : req.body.province
+            province : req.body.province, 
+
         }).then(ref => {
             res.redirect('/list');
             res.redirect('/home');
@@ -88,19 +89,6 @@ app.get('/insert',function(req,res){
     });
     
     
-app.get('/update/:id',function(req,res){
-    var id=req.params.id;
-    db.collection("BNK48SHOP").doc(id).get()
-    .then(doc =>{
-            obj1 = doc.data();
-            obj2 = {id :doc.id};
-            data_list=Object.assign(obj1,obj2);
-            res.render('update',data_list);
-        })
-       .catch(err => {
-           console.log('Error getting document',err);
-    });
-});
 
 app.get('/update/:id',function(req, res) {
     var id = req.params.id;
@@ -124,7 +112,8 @@ app.post('/update',function(req, res) {
         PDDescription : req.body.PDDescription,
         Price : req.body.Price,
         sex : req.body.sex,
-        province : req.body.province
+        province : req.body.province,
+
     }).then(ref => {
         res.redirect('/list')
     });
