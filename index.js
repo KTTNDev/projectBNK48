@@ -92,6 +92,7 @@ app.get('/insert',function(req,res){
 
 app.get('/update/:id',function(req, res) {
     var id = req.params.id;
+    
     var data_list = [] ;
     db.collection('BNK48SHOP').doc(id).get()
     .then(doc => {
@@ -106,6 +107,7 @@ app.get('/update/:id',function(req, res) {
 });
 
 app.post('/update',function(req, res) {
+    var id=req.body.id;
     db.collection("BNK48SHOP").doc(id).update({
         PicProduct : req.body.PicProduct,
         PRODUCT : req.body.PRODUCT,
