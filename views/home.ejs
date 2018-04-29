@@ -142,18 +142,30 @@
         </div>
       </div><br>
 <style>
-    h1  {
+    @font-face  {
     font-family: 'Hammer Thin';
     src: url('hammer_thin-webfont.woff2') format('woff2'),
-         url('hammer_thin-webfont.woff') format('woff');
-         font-size: 30px;  
+         url('hammer_thin-webfont.woff') format('woff'),
+         url('hammer_thin-webfont.ttf') format('truetype');
+         font-weight: normal;
+    font-style: normal;
 }
-body {
+@font-face {
     font-family: 'Hammer Thin';
-    src: url('hammer_thin-webfont.woff2') format('woff2'),
-         url('hammer_thin-webfont.woff') format('woff');
-      margin: 0;
-      font-size: 20px;  
+    
+    src: url('fonts/hammer_thin-webfont.woff2') format('woff2'),
+         url('hammer_thin-webfont.woff') format('woff'),
+         url('hammer_thin-webfont.ttf') format('truetype');
+         font-weight: normal;
+    font-style: normal;
+}
+div {
+  font-family: 'Hammer Thin', sans-serif;
+  font-size: 20px;
+}
+h1 {
+  font-family: 'Hammer Thin', sans-serif;
+  font-size: 40px;
 }
     .topnav {
             overflow: hidden;
@@ -198,7 +210,7 @@ body {
             </style>
 
 </head>
-<body><center><hr><h1>【MV Full】Koisuru Fortune Cookie คุกกี้เสี่ยงทาย / BNK48</h1></hr>
+<body><center><hr>【MV Full】Koisuru Fortune Cookie คุกกี้เสี่ยงทาย / BNK48</hr>
     <video width="720" height="480" autoplay>
         <source src="kfc.mp4" type="video/mp4">
       </video></hr>
